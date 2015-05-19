@@ -39,10 +39,10 @@ public class IncludeView extends FrameLayout {
 
         try {
             // Layout reference.
-            int layout = a.getResourceId(R.styleable.IncludeView_viewGroupLayout, -1);
+            int layout = a.getResourceId(R.styleable.IncludeView_view_group_layout, -1);
 
             // Container to replace reference.
-            int containerId = a.getResourceId(R.styleable.IncludeView_containerId, -1);
+            int containerId = a.getResourceId(R.styleable.IncludeView_container_id, -1);
 
             // If one of them is not set, work as a FrameLayout.
             if (layout != -1 && containerId != -1) {

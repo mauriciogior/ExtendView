@@ -62,8 +62,8 @@ And finally, inside our layout we can use the container:
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:padding="50dp"
-        custom:viewGroupLayout="@layout/viewgroup_container"
-        custom:containerId="@id/container">
+        custom:view_group_layout="@layout/viewgroup_container"
+        custom:container_id="@id/container">
     
         <TextView
             android:layout_width="wrap_content"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="IncludeView">
-        <attr name="viewGroupLayout" format="reference" />
-        <attr name="containerId" format="reference" />
+        <attr name="view_group_layout" format="reference" />
+        <attr name="container_id" format="reference" />
     </declare-styleable>
 </resources>

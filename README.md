@@ -47,7 +47,9 @@ And finally, inside our layout we can use the container:
 `fragment_information.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/majorLayout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/majorLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -58,8 +60,8 @@ And finally, inside our layout we can use the container:
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:padding="50dp"
-        inevent:viewGroupLayout="@layout/viewgroup_container"
-        inevent:containerId="@id/container">
+        custom:viewGroupLayout="@layout/viewgroup_container"
+        custom:containerId="@id/container">
     
         <TextView
             android:layout_width="wrap_content"

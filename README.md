@@ -4,6 +4,8 @@ Have you ever wanted a more sophisticated `<include />` on your XML files?
 
 You don't need to create a custom `ViewGroup` anymore!
 
+To use with gradle: `compile "com.mauriciogiordano:includeview:1.0.0"`
+
 ## Example
 `viewgroup_container.xml`
 ```xml

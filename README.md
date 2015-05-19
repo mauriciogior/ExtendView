@@ -5,14 +5,14 @@ Have you ever wanted a more sophisticated `<include />` on your XML files?
 You don't need to create a custom `ViewGroup` anymore!
 
 ## Example
-
 `viewgroup_container.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#eee">
 
     <!-- A top border -->
     <View
@@ -57,15 +57,27 @@ And finally, inside our layout we can use the container:
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:padding="50dp"
         inevent:viewGroupLayout="@layout/viewgroup_container"
         inevent:containerId="@id/container">
     
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Hello World" />
     
     </com.mauriciogiordano.includeview.IncludeView>
     
 </LinearLayout>
 ```
+
+### Result
+
+`viewgroup_container.xml` view:
+
+![](https://dl.dropboxusercontent.com/u/82414064/includelayout1.png)
+
+`fragment_information.xml` view:
+
+![](https://dl.dropboxusercontent.com/u/82414064/includelayout2.png)

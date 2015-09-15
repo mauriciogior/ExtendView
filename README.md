@@ -1,10 +1,10 @@
-# Include View
+# ExtendView
 
 Have you ever wanted a more sophisticated `<include />` on your XML files?
 
 You don't need to create a custom `ViewGroup` anymore!
 
-To use with gradle: `compile "com.mauriciogiordano:includeview:1.0.0"`
+To use with gradle: `compile "com.mauriciogiordano:extendview:1.0.2"`
 
 ## Example
 `viewgroup_container.xml`
@@ -56,7 +56,7 @@ And finally, inside our layout we can use the container:
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.mauriciogiordano.includeview.IncludeView
+    <com.mauriciogiordano.extendview.ExtendView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -71,7 +71,7 @@ And finally, inside our layout we can use the container:
             android:layout_gravity="center"
             android:text="Hello World" />
     
-    </com.mauriciogiordano.includeview.IncludeView>
+    </com.mauriciogiordano.extendview.ExtendView>
     
 </LinearLayout>
 ```

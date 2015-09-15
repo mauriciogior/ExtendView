@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 android {
     compileSdkVersion 21
@@ -20,4 +22,74 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from 'src/main/java'
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+artifacts {
+    archives androidJavadocsJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+group = "com.mauriciogiordano"
+archivesBaseName = "extendview"
+version = "1.0.2"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Extend View'
+                packaging 'aar'
+                description 'A simple way to extend a "ViewGroup" in your XML layout.'
+                url 'https://github.com/mauriciogior/ExtendView'
+
+                scm {
+                    url 'https://github.com/mauriciogior/ExtendView'
+                    connection 'scm:git:https://github.com/mauriciogior/ExtendView.git'
+                }
+
+                licenses {
+                    license {
+                        name 'GNU GENERAL PUBLIC LICENSE, VERSION 2'
+                        url 'http://www.gnu.org/licenses/gpl-2.0.html'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'mauriciogior'
+                        name 'Mauricio Giordano'
+                        email 'mauricio.c.giordano@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }

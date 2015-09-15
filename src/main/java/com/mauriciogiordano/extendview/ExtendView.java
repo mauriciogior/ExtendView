@@ -1,4 +1,4 @@
-package com.mauriciogiordano.includeview;
+package com.mauriciogiordano.extendview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,58 +12,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mauricio on 5/17/15.
+ * Created by Mauricio Giordano on 5/17/15.
+ * Author: Mauricio Giordano (mauricio.c.giordano@gmail.com)
+ * License: GPLv2
  */
-public class IncludeView extends FrameLayout {
+public class ExtendView extends FrameLayout {
 
     /**
      * Target layout references.
      */
-    private ViewGroup included;
+    private ViewGroup extended;
     private ViewGroup container;
 
     private boolean hasAttached = false;
 
-    public IncludeView(Context context, AttributeSet attrs) {
+    public ExtendView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public IncludeView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ExtendView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         // Our attributes.
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.IncludeView,
+                R.styleable.ExtendView,
                 0, 0);
 
         try {
             // Layout reference.
-            int layout = a.getResourceId(R.styleable.IncludeView_view_group_layout, -1);
+            int layout = a.getResourceId(R.styleable.ExtendView_view_group_layout, -1);
 
             // Container to replace reference.
-            int containerId = a.getResourceId(R.styleable.IncludeView_container_id, -1);
+            int containerId = a.getResourceId(R.styleable.ExtendView_container_id, -1);
 
             // If one of them is not set, work as a FrameLayout.
             if (layout != -1 && containerId != -1) {
 
-                // Inflate the Layout to include.
-                included = (ViewGroup) LayoutInflater.from(context).inflate(layout, null, false);
+                // Inflate the Layout to extend.
+                extended = (ViewGroup) LayoutInflater.from(context).inflate(layout, null, false);
 
                 // If it's null (invalid reference), we can't do anything.
-                if (included == null) {
+                if (extended == null) {
                     throw new RuntimeException("You must specify a valid layout!");
                 }
 
                 // Search for the container.
-                container = (ViewGroup) included.findViewById(containerId);
+                container = (ViewGroup) extended.findViewById(containerId);
 
                 // If it's null (invalid id), we can't do anything.
                 if (container == null) {
                     throw new RuntimeException("You must specify a valid container id!");
                 }
 
-                // To avoid placing invalid layouts.
+            // To avoid placing invalid layouts.
             } else {
                 hasAttached = true;
             }
@@ -95,9 +97,8 @@ public class IncludeView extends FrameLayout {
                 container.addView(child);
             }
 
-            // Add the included view.
-            // Yes, we have a useless FrameLayout.
-            addView(included);
+            // Add the extended view.
+            addView(extended);
         }
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);

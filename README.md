@@ -1,3 +1,5 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ExtendView-green.svg?style=true)](https://android-arsenal.com/details/1/4500)
+
 # ExtendView
 
 Have you ever wanted a more sophisticated `<include />` on your XML files?

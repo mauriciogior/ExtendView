@@ -82,8 +82,8 @@ And finally, inside our layout we can use the container:
 
 `viewgroup_container.xml` view:
 
-![](https://dl.dropboxusercontent.com/u/82414064/includelayout1.png)
+![](https://i.imgur.com/G7qvNRu.png)
 
 `fragment_information.xml` view:
 
-![](https://dl.dropboxusercontent.com/u/82414064/includelayout2.png)
+![](https://i.imgur.com/RGEq7JM.png)
